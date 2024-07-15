@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="x-icon" href="titleicon.jpg">
+    <title>ZOUHAIR'S Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="homeLink">HOME</a></li>
+                <li><a href="project_crud.html">CRUD JS</a></li>
+                <li class="poo-menu">
+                    <a href="#" id="pooToggle">POO</a>
+                    <ul id="pooOptions" class="hidden"> <!-- Initially hidden -->
+                        <li><a href="#" id="manipulationLink">Manipulation des données</a></li>
+                        <li><a href="#" id="regexLink">Expression Regx</a></li>
+                        <li><a href="#" id="tp1Link">TP1</a></li>
+                        <li><a href="#" id="tp2Link">TP2</a></li>
+                        <li><a href="#" id="tp3Link">TP3</a></li>
+                        <li><a href="#" id="tp4Link">TP4</a></li>
+                    </ul>
+                </li>
+                <li><a href="#help" id="helpLink">HELP</a></li>
+                <li><a href="#presentation" id="presentationLink">PRESENTATION</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Content for HOME --> 
+        <section id="homeContent" class="content hidden">
+            <h1>Welcome to My Portfolio Website</h1>
+            <!-- Add more content as needed -->
+        </section>
+
+        <!-- Content for POO options -->
+        <section id="manipulationContent" class="content hidden">
+            <!-- Content for manipulation des données -->
+            <h1 style="font-weight: bold;">Manipulation des donnee</h1>
+            <h4>Copier un fichier et Coller dans un autre fichier txt</h4>
+        <div class="code-container">
+            <pre><code id="code-snippet1">
+f= open("test11.txt", "r")
+cop = f.read()
+                
+f = open("test12.txt", "x")
+                
+f = open("test12.txt", "w")
+                
+f.write(cop)
+                
+f.close()
+            </code></pre>
+            <button onclick="copyCode(('code-snippet1'))">Copy Code</button>
+            <h4>Supprimer un ficher</h4>
+            <div class="code-container">
+                <pre><code id="code-snippet2">
+# import os
+# os.remove('test12.txt')
+            </code></pre>
+            <button onclick="copyCode(('code-snippet2'))">Copy Code</button>
+        </div>
+        <h4>Lire un fichier CSV</h4>
+        <div class="code-container">
+            <pre><code id="code-snippet3">
+import csv
+f = open("car_prices.csv", "r")
+# fcsv = csv.reader(f,delimiter=",")
+fcsv = csv.DictReader(f,delimiter=",")
+j = 0
+for i in fcsv:
+    print(i)
+    j += 1
+    if j==10:
+        break
+            </code></pre>
+        <button onclick="copyCode(('code-snippet3'))">Copy Code</button>
+        </div>
+        <h4>Ecrire dans un ficher CSV</h4>
+        <div  class="code-container" >
+            <pre><code id="code-snippet4">
+import csv
+from src.vente import *
+
+c1 = Client("Ali","BK8263",19,"j4811",1791)
+c2 = Client("Ayoub","RH5192",32,"Y6291",8211)
+c3 = Client("Ahmed","CI1081",22,"A3271",9171)
+
+f = open("csv1.csv", "x")
+f = open("csv1.csv", "w")
+
+fcsv = csv.DictWriter(f, delimiter=",", fieldnames=['nom',"cin","age","id","budget"])
+fcsv.writeheader()
+
+dict1 = { "cin": c1.cin, "age": c1.age,'nom': c1.nom, "id": c1.id_c, "budget": c1.budget}
+dict2 = {'nom': c2.nom, "cin": c2.cin, "age": c2.age, "id": c2.id_c, "budget": c2.budget}
+dict3 = {'nom': c3.nom, "cin": c3.cin, "age": c3.age, "id": c3.id_c, "budget": c3.budget}
+
+fcsv.writerow(dict1)
+fcsv.writerow(dict2)
+fcsv.writerow(dict3)
+
+f.close()
+            </code></pre>
+        <button onclick="copyCode(('code-snippet4'))">Copy Code</button>
+        </div>
+        <h4>Exemple de lecture et d'écriture de fichier JSON</h4>
+            <div  class="code-container" >
+                <pre><code id="code-snippet5">
+import json
+
+personnes = [
+    {
+    "nom":"ayoub",
+    "age":19,
+    "email":"aaitali@gmail.com"
+    },
+    {
+    "nom":"Ali",
+    "age":17,
+    "email":"ali241@gmail.com"
+    },
+    {
+    "nom":"Yassir",
+    "age":22,
+    "email":"yassir200@gmail.com"
+    }
+]
+                    
+# f = open("json1.json","x")
+f = open("json1.json","w")
+json.dump(personnes, f, indent=4)
+                                
+                                
+                                
+f = open("products.json","r")
+data = json.load(f)
+for x in data:
+    print(x)
+                    
+                    
+try:
+    f = open("json1.json", 'r')
+    data_loaded = json.load(f)
+    print(data_loaded)
+                    
+except FileNotFoundError:
+    print("File not found.")
+except json.JSONDecodeError:
+    print("Error decoding JSON.")
+except Exception as e:
+    print("An error occurred:", e)
+                </code></pre>
+                <button onclick="copyCode(('code-snippet5'))">Copy Code</button>
+                </div>
+
+
+        </section>
+        <section id="regexContent" class="content hidden">
+            <!-- Content for expression regx -->
+            <h1 style="font-weight: bold;">Expression Regular</h1>
+            <h4>Expressions régulières de base</h4>
+            <div  class="code-container" >
+                <pre><code id="code-snippet6">
+# . => A, h, 8, -
+# [A-Z] => A, T , U
+# [A-Z 0-9] => J, 8, 2
+# [^A] => B , C, D
+# [^a-z] => 2, ', D
+# R* => R, RR, RRR, ""
+# f+ => f, ff, fff
+# ^Le => Lecal, Le chien, Le room
+# e$ => liste, be, lowe
+# [0-9]{1,3} +> 22,826, 6
+# Y? => Y, 
+# (ab|ba) => ab , ba
+                </code></pre>
+                <button onclick="copyCode(('code-snippet6'))">Copy Code</button>
+                </div>
+                <h4>la syntaxe étendue comprend aussi une série de séquences d'échappement</h4>
+                <div  class="code-container" >
+                    <pre><code id="code-snippet7">
+# \ : symbole d'échappement ;
+# \e : séquence de contrôle escape ;
+# \f : saut de page ;
+# \n : fin de ligne ;
+# \r : retour-chariot ;
+# \t : tabulation horizontale ;
+# \v : tabulation verticale ;
+# \d : classe des nombres entiers ;
+# \s : classe des caractères d'espacement ;
+# \w : classe des caractères alphanumériques ;
+# \b : délimiteurs de début ou de fin de mot ;
+# \D : négation de la classe \d ;
+# \S : négation de la classe \s ;
+# \W : négation de la classe \w ;
+# \B : négation de la classe \b.
+                </code></pre>
+                <button onclick="copyCode(('code-snippet7'))">Copy Code</button>
+        </div>
+        <h4>Manipulation des expressions régulières</h4>
+        <h5>Exemple:</h5>
+        <div  class="code-container" >
+            <pre><code id="code-snippet8">
+import re
+        
+text = "Ayoub a 19 ans et son CIN BF23539 et son ID est 1521 et son télé est 0625223862 et son email est aaiatali624@gmail.com, Zouhair a 22 ans et son télé est +212625223862 et son CIN BH10731 son ID st 4109 et son email est zouhairZZ@gmai.com"
+                
+                
+                
+noms = re.findall(r"[A-Z][a-z]+", text)
+emails = re.findall(r"[a-zA-Z\._+-]+[0-9]*@[a-z]+\.[a-z]+", text)
+ages = re.findall(r" [0-9]{1,3} ", text)
+cins = re.findall(r"[A-Z]{2}[0-9]{5}", text)
+ids = re.findall(r' [0-9]{4,} ',text)
+                
+print(noms)
+print(emails)
+print(ages)
+print(cins)
+print(ids)
+                
+expression = re.compile(r"[A-Z][a-z]+")
+noms = expression.search(text)
+print(noms)
+                
+                
+eqs = "2x**2+6x-4=0"
+pp = "2x^3+2x^3-2x^3+2x^3 est polynome"
+                
+eq = re.findall(r'-?[0-9]+x\*\*2[+-][0-9]+x[+-][0-9]+=0', eqs)
+poly = re.findall(r"(-?\+?[0-9]*x\^[1-9]*)", pp)
+                
+print(eq)
+print(poly)
+                
+nbrs = "0625223862 - 0524394633 - 0742836441 - 00212828524399 - +212762996143 - 06369261851"
+                
+nbr_N = re.findall(r"0[(5|6|7|8)][0-9]{8} ", nbrs)
+                
+nbr_I = re.findall(r"[(\+|00)]212[(5|6|7|8)][0-9]{8} ", nbrs)
+                
+nbrs = nbr_N.__add__(nbr_I)
+                
+print(nbr_N)
+print(nbr_I)
+print(nbrs)
+            </code></pre>
+            <button onclick="copyCode(('code-snippet8'))">Copy Code</button>
+        </div>
+            
+        </section>
+        <section id="tp1Content" class="content hidden">
+            <!-- Content for TP1 -->
+            <div  class="code-container" style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f9f9f9;">
+                <div style="max-width: 800px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); display: inline;">
+                  <h1 style="color: #333; font-size: 2em; text-align: left; border-bottom: 2px solid #007BFF; padding-bottom: 10px; margin-bottom: 20px;">TP N°1 </h1>
+              
+                  <div style="margin-bottom: 20px;">
+                    <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">Exercice 1: Compréhension des Composantes d'une Classe</h2>
+                    
+                    <ol style="padding-left: 20px;">
+                      <li style="margin-bottom: 20px;">
+                        <strong>Définitio d'une Classe et Attributs :</strong>
+                        <ul style="padding-left: 20px; list-style-type: disc;">
+                          <li style="margin-bottom: 10px;">Créez une classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Personne</code> avec les attributs <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">nom</code> et <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">age</code>.</li>
+                          <li style="margin-bottom: 10px;">Ajoutez un constructeur pour initialiser ces attributs.</li>
+                          <li style="margin-bottom: 10px;">Implémentez une méthode pour afficher les détails de la personne.</li>
+                        </ul>
+                      </li>
+                      <li style="margin-bottom: 20px;">
+                        <strong>Types de Données et Attributs de Classe :</strong>
+                        <ul style="padding-left: 20px; list-style-type: disc;">
+                          <li style="margin-bottom: 10px;">Ajoutez un attribut de classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">population</code> pour suivre le nombre total d'instances de la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Personne</code>.</li>
+                          <li style="margin-bottom: 10px;">Mettez à jour le constructeur pour incrémenter le compteur de population à chaque nouvelle instance.</li>
+                          <li style="margin-bottom: 10px;">Implémentez une méthode de classe pour afficher le nombre total de personnes.</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+                  <pre ><code id="code-snippet9">
+class Personne :
+population = 0
+def__init__(self,nom,age,salaire):
+    self.nom = nom
+    self.age = age
+    self.sal = salaire
+    Personne.population += 1
+def affiche(self):
+    print(f"nom:{self.nom}, age:{self.age}, salaire:{self.sal}")
+@classmethod
+def nbr_personnes(cls):
+    return cls.population
+                                
+p1 = Personne("Ali",20,5000)
+p1.affiche()
+p2 = Personne("Ahmed",23,6000)
+p2.affiche()
+print(Personne.nbr_personnes())
+                                    
+                                    </code></pre>
+                </div>
+            
+        
+                
+            <button onclick="copyCode(('code-snippet9'))">Copy Code</button>
+            <div style="margin-bottom: 20px;">
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">Exercice 2: Encapsulation et Modificateurs</h2>
+          
+                <ol style="padding-left: 20px;">
+                  <li style="margin-bottom: 20px;">
+                    <strong>Principe de l'Encapsulation :</strong>
+                    <ul style="padding-left: 20px; list-style-type: disc;">
+                      <li style="margin-bottom: 10px;">Ajoutez un attribut privé <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">__salaire</code> à la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Personne</code>.</li>
+                      <li style="margin-bottom: 10px;">Implémentez des méthodes getters et setters pour accéder et modifier cet attribut.</li>
+                    </ul>
+                  </li>
+                  <li style="margin-bottom: 20px;">
+                    <strong>Modificateurs et Accesseurs :</strong>
+                    <ul style="padding-left: 20px; list-style-type: disc;">
+                      <li style="margin-bottom: 10px;">Ajoutez une méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Augmenter_salaire</code> qui permet d'augmenter le salaire d'une personne de manière sécurisée.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+              <pre ><code id="code-snippet10">
+                class Personne:
+        population=0
+        def __init__(self, nom, age, salaire):
+            self.nom = nom
+            self.age = age
+            self.__salaire = salaire
+            Personne.population+=1
+    
+        def afficher(self):
+            print(f'Nom:{self.nom},Age:{self.age}')
+
+        @classmethod
+        def nbr_personnes(cls):
+            print(f'Nomber totale de personnes:{cls.population}')
+
+        def _getters(self):
+            print(f"Salaire de {self.nom} est {self.__salaire} DH")
+        def _setters(self,n):
+            self.__salaire = int(n)
+
+        def Augmenter_salaire(self,n):
+            self.__salaire = self.__salaire + (self.__salaire*(n/100))
+
+    p1 = Personne("Ali",19,3000)
+    p2 = Personne("Ayoub",20,4000)
+    p1.Augmenter_salaire(10)
+    p1._getters()
+    p2._setters(6000)
+    p2.Augmenter_salaire(15)
+    p2._getters()
+
+              </code></pre>
+              <button onclick="copyCode(('code-snippet10'))">Copy Code</button>
+              <div style="margin-bottom: 20px;">
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">Exercice 3: Définition et Destruction d'un Objet</h2>
+          
+                <ol style="padding-left: 20px;">
+                  <li style="margin-bottom: 20px;">
+                    <strong>Définition d'un Objet et Instanciation :</strong>
+                    <ul style="padding-left: 20px; list-style-type: disc;">
+                      <li style="margin-bottom: 10px;">Créez une nouvelle classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Cours</code> avec des attributs tels que <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">nom</code>, <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">professeur</code> (instance de <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Personne</code>), et <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">étudiants</code> (une liste d'instances de <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Personne</code>).</li>
+                      <li style="margin-bottom: 10px;">Ajoutez un constructeur pour initialiser ces attributs.</li>
+                    </ul>
+                  </li>
+                  <li style="margin-bottom: 20px;">
+                    <strong>Destruction Explicite d'un Objet :</strong>
+                    <ul style="padding-left: 20px; list-style-type: disc;">
+                      <li style="margin-bottom: 10px;">Ajoutez une méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">quitter_cours</code> à la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Personne</code> qui permet à un étudiant de quitter un cours.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+              <pre ><code id="code-snippet11">
+                class Cours(Personne):
+                def __init__(self,nom, professeur, etudiants = None):
+                    self.nom = nom
+                    self.professeur = professeur
+                    self.etudiants = etudiants if not None else []
+                def quitter_cours(self,etudiant):
+                    self.etudiants.remove(etudiant)
+        
+                    
+            prefesseur = Personne("Ahmed",28,9000)
+        
+            cour1 = Cours("java script", prefesseur, [p1,p2])
+            cour2 = Cours("Python", prefesseur, [p1,p2,p3,p4])
+            cour3 = Cours("HTML & CSS", prefesseur, [p1,p2,p3])
+        
+            cour2.quitter_cours(p1)
+              </code></pre>
+              <button onclick="copyCode(('code-snippet11'))">Copy Code</button>
+              <div style="margin-bottom: 20px;">
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">Exercice 4: Méthodes et Visibilité</h2>
+                
+                <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 20px;">
+                        <strong>Définition d'une Méthode et Visibilité :</strong>
+                        <ul style="padding-left: 20px; list-style-type: disc;">
+                            <li style="margin-bottom: 10px;">Ajoutez une méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">annoncer_cours</code> à la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Cours</code> qui affiche les détails du cours, du professeur, et des étudiants.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Paramètres d'une Méthode et Méthodes de Classe :</strong>
+                        <ul style="padding-left: 20px; list-style-type: disc;">
+                            <li style="margin-bottom: 10px;">Modifiez la méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">annoncer_cours</code> pour accepter un paramètre facultatif permettant de filtrer les étudiants par âge.</li>
+                            <li style="margin-bottom: 10px;">Ajoutez une méthode de classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">cours_populaire</code> à la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Cours</code> qui renvoie le cours avec le plus d'étudiants.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-bottom: 20px;">
+                        <strong>Fonctions Imbriquées :</strong>
+                        <ul style="padding-left: 20px; list-style-type: disc;">
+                            <li style="margin-bottom: 10px;">Ajoutez une fonction imbriquée à la méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">annoncer_cours</code> qui affiche des informations spécifiques lorsque le cours est populaire (par exemple, plus de 10 étudiants).</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            <pre ><code id="code-snippet12">class Cours(Personne):
+    nbr_etudiant = 0
+    population = ""
+    def __init__(self,nom,professeur,etudiants=None):
+        self.nom = nom
+        self.professeur = professeur
+        self.etudiants = etudiants if not None else []
+        if self.etudiants.__len__() > Cours.nbr_etudiant:
+            Cours.nbr_etudiant =  self.etudiants.__len__()
+            Cours.population = self.nom
+        
+    def quitter_cours(self,etudiant):
+        self.etudiants.remove(etudiant)
+        
+    def annocer_cours(self,etudiantAge=19):
+        print(f"Cours : {self.nom}")
+        print("Proffesseur :")
+        self.professeur.afficher()
+        print("Etudiants : ")
+        for etudiant in self.etudiants:
+            if etudiant.age == etudiantAge:
+                etudiant.afficher()
+        def imbriquée():
+            if self.etudiants.__len__() > 10:
+                print(f"Plus de 10 etudiants")
+            elif self.etudiants.__len__() <  10:
+                print(f"Moin de 10 etudiants")
+            else:
+                print(f"10 etudiants")
+            moyenneAge = 0
+            for ageEtud in self.etudiants:
+                moyenneAge += ageEtud.age
+            moyenneAge /= self.etudiants.__len__()
+            print(f"Moyenne d'age des etudiants est {moyenneAge}")
+        imbriquée()
+    @classmethod
+    def cours_populaire(cls):
+        print(f"Cours avec le plus d'étudiants est {Cours.population} de {Cours.nbr_etudiant} étudiants")
+        
+prefesseur = Personne("Ahmed",28,9000)
+cour1 = Cours("java script", prefesseur, [p1,p2])
+cour2 = Cours("Python", prefesseur, [p1,p2,p3,p4])
+cour3 = Cours("HTML & CSS", prefesseur, [p1,p2,p3])
+cour2.quitter_cours(p1)
+cour1.annocer_cours(20)
+Cours.cours_populaire()
+cour2.annocer_cours()
+        </code>
+            </code></pre>
+            <button onclick="copyCode(('code-snippet12'))">Copy Code</button>
+            </div>
+            
+            
+        </div>
+            
+
+              
+        </section>
+        <section id="tp2Content" class="content hidden">
+            <!-- Content for TP2 -->
+            <div  class="code-container" style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f9f9f9;">
+                <h1 style="color: #333; font-size: 2em; text-align: left; border-bottom: 2px solid #007BFF; padding-bottom: 10px; margin-bottom: 20px;">TP N°2</h1>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                  Exercice 1: Modélisation d'une Classe
+                </h2>
+              
+                <ol style="padding-left: 20px;">
+                  <li style="margin-bottom: 20px;">
+                    <strong>Définition d'une Classe et Attributs :</strong>
+                    <ul style="padding-left: 20px; list-style-type: disc;">
+                      <li style="margin-bottom: 10px;">
+                        Définissez une classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Produit</code> 
+                        avec les attributs <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">nom</code>, 
+                        <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">prix</code>, et 
+                        <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">quantite_stock</code>.
+                      </li>
+                      <li style="margin-bottom: 10px;">
+                        Implémentez un constructeur pour initialiser ces attributs lors de la création d'une instance.
+                      </li>
+                      <li style="margin-bottom: 10px;">
+                        Définissez une méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">afficher_details</code> 
+                        pour afficher les détails du produit.
+                      </li>
+                    </ul>
+                  </li>
+                </ol>
+                <pre ><code id="code-snippet13">
+    class Produit:
+
+    def __init__(self, nom, prix, quantite_stack):
+        self.nom = nom
+        self.prix = prix
+        self.quantite = quantite_stack
+            
+    def afficher_details(self):
+        print(f"Nom : {self.nom}, Prix : {self.prix}, Quantité Stock : {self.quantite}")
+            
+p1 = Produit("pc",5000,12)
+p1.afficher_details()
+            
+                
+                </code></pre>
+                <button onclick="copyCode(('code-snippet13'))">Copy Code</button>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 2: Principe de l'Encapsulation
+                  </h2>
+                  
+                  <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 20px;">
+                      <strong>Encapsulation des Attributs :</strong>
+                      <ul style="padding-left: 20px; list-style-type: disc;">
+                        <li style="margin-bottom: 10px;">
+                          Encapsulez les attributs de la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Produit</code> en les définissant comme des attributs privés.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Implémentez des méthodes <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">getNom</code>, <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">getPrix</code>, <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">getQuantiteStock</code> pour accéder aux attributs de manière sécurisée.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Implémentez des méthodes <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">setNom</code>, <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">setPrix</code>, <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">setQuantiteStock</code> pour modifier les attributs de manière sécurisée.
+                        </li>
+                      </ul>
+                    </li>
+                  </ol>
+                <pre><code id="code-snippet14">
+                    class Produit:
+                    def __init__(self, nom, prix, quantite_stack):
+                        self.__nom = nom
+                        self.__prix = prix
+                        self.__quantite = quantite_stack
+                
+                    def afficher_details(self):
+                        print(f"Nom : {self.__nom}, Prix : {self.__prix}, Quantité Stock : {self.__quantite}")
+                
+                    def get_nom(self):
+                        return self.__nom
+                    def get_prix(self):
+                        return self.__prix
+                    def get_quantité(self):
+                        return self.__quantite
+                    
+                    def set_nom(self,nom):
+                        self.__nom = nom
+                    def set_prix(self,prix):
+                        self.__prix = prix
+                    def set_nom(self,nom):
+                        self.__nom = nom
+                
+                    @staticmethod
+                    def sortList(list):
+                        list_dec = []
+                        while list != []:
+                            max = list[0]
+                            i = 1
+                            for i in range(len(list)):
+                                if list[i]>max:
+                                    max = list[i]
+                            list_dec.append(max)
+                            list.remove(max)
+                        return list_dec
+                    
+                    @staticmethod
+                    def printStar(num):
+                        i=1
+                        j=1
+                        for i in range(num):
+                            for j in range(i):
+                                print('*',end='')
+                            print('\n')
+                
+                import random as r
+                
+                l = r.sample(range(0,100),10)
+                p2 = Produit("pc",5000,12)
+                p2.set_nom('labtop')
+                print(p2.get_nom())
+                
+                l2 = Produit.sortList(l)
+                print(l2)
+                    
+                
+                
+                
+
+                </code></pre>
+                <button onclick="copyCode(('code-snippet14'))"> copyCode</button>  
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 3: Principe de l'Héritage
+                  </h2>
+                  
+                  <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 20px;">
+                      <strong>Héritage et Ajout d'Attribut :</strong>
+                      <ul style="padding-left: 20px; list-style-type: disc;">
+                        <li style="margin-bottom: 10px;">
+                          Définissez une classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Aliment</code> qui hérite de la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Produit</code>.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Ajoutez un attribut <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">date_peremption</code> à la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Aliment</code>.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Implémentez un constructeur pour initialiser l'attribut <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">date_peremption</code> lors de la création d'une instance de la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Aliment</code>.
+                        </li>
+                      </ul>
+                    </li>
+                  </ol>
+                <pre><code id="code-snippet15">
+                    
+class Produit:
+def __init__(self, nom, prix, quantite_stack):
+    self._nom = nom
+    self._prix = prix
+    self._quantite = quantite_stack
+
+def afficher_details(self):
+    print(f"Nom : {self._nom}, Prix : {self._prix}, Quantité Stock : {self._quantite}")
+def calculer_prix_total(self,quantité):
+    return f"Prix Total {self._prix * quantité}"
+
+class Aliment(Produit):
+population  = 0
+def __init__(self, nom, prix, quantite_stack, date_peremption):
+    super().__init__(nom, prix, quantite_stack)
+    self._date = date_peremption
+    Aliment.population+=1
+
+def afficher_details(self):
+   print(f"Nom : {self._nom}, Prix : {self._prix}, Quantité Stock : {self._quantite}, Date de Peremption {self._date}")
+@classmethod
+
+def nbr_aliment(cls):
+   print(f'Nomber totale de 
+    aliments : {cls.population}')
+
+a1 = Aliment("pc",5000,200,"20-02-2024")
+a1.afficher_details()
+a2 = Aliment("mobile",2100,400,"04-01-2024")
+a2.afficher_details()
+Aliment.nbr_aliment()
+
+                  
+                </code></pre> 
+                <button onclick="copyCode(('code-snippet15'))">copyCode</button>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 4: Principe du Polymorphisme
+                  </h2>
+                  
+                  <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 20px;">
+                      <strong>Polymorphisme avec Méthode :</strong>
+                      <ul style="padding-left: 20px; list-style-type: disc;">
+                        <li style="margin-bottom: 10px;">
+                          Ajoutez une méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">calculer_prix_total</code> à la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Produit</code> qui prend la quantité en paramètre et renvoie le prix total.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Redéfinissez cette méthode dans la classe <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Aliment</code> pour appliquer une réduction si la date de péremption est proche.
+                        </li>
+                      </ul>
+                    </li>
+                  </ol>
+                <pre><code id="code-snippet16">
+                    
+class Aliment(Produit):
+population  = 0
+def __init__(self, nom, prix, quantite_stack, date_peremption):
+    super().__init__(nom, prix, quantite_stack)
+    self._date = date_peremption
+    Aliment.population+=1
+
+def afficher_details(self):
+   print(f"Nom : {self._nom}, Prix : {self._prix}, Quantité Stock : {self._quantite}, Date de Peremption {self._date}")
+
+@classmethod
+def nbr_aliment(cls):
+    print(f'Nomber totale de 
+      aliments : {cls.population}')
+
+def calculer_prix_total (self,quantité,date_per):
+   date_p = []
+   date_p = date_per.split('-')
+   date_x = []
+   date_x = self._date.split('-')
+   if int(date_x[0])-1 == int(date_p[0]):
+      return(self._prix*quantité) -(self._prix*quantité*0.1)
+   Elif int(date_x[0])-2 == int(date_p[0]):
+      return(self._prix*quantité)-(self._prix*quantité*0.05)
+   else:
+      return(self._prix*quantité)
+
+p3 = Aliment("book", 20,200,'2024-02-12')
+p4 = Aliment("clavier", 100,30,"2024-01-14")
+
+Aliment.nbr_aliment()
+
+print(p3.calculer_prix_total(10,'2023-05-15'))
+
+
+
+                </code></pre> 
+                <button onclick="copyCode(('code-snippet16'))">copyCode</button>                 
+                            
+              </div>
+            
+
+        </section>
+        <section id="tp3Content" class="content hidden">
+            <!-- Content for TP3 -->
+            <div  class="code-container" style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f9f9f9;">
+                <h1 style="color: #333; font-size: 2em; text-align: left; border-bottom: 2px solid #007BFF; padding-bottom: 10px; margin-bottom: 20px;">TP N°3</h1>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 1: Polymorphisme et Redéfinition des Méthodes
+                  </h2>
+                  
+                  <ol style="padding-left: 20px;">
+                    <li style="margin-bottom: 20px;">
+                      <strong>Classe Abstraite et Héritage :</strong>
+                      <ul style="padding-left: 20px; list-style-type: disc;">
+                        <li style="margin-bottom: 10px;">
+                          Définissez une classe abstraite <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Vehicule</code> avec une méthode abstraite <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">deplacer()</code>.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Créez des classes dérivées <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Voiture</code> et <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Avion</code> qui héritent de <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Vehicule</code>.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Redéfinissez la méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">deplacer()</code> dans chaque classe dérivée pour afficher un message spécifique à chaque type de véhicule.
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                          Créez une méthode statique <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">prime()</code> qui prend en paramètre un nombre.
+                        </li>
+                      </ul>
+                    </li>
+                  </ol>
+                <pre><code id="code-snippet17">
+    
+            
+from abc import ABCMeta, abstractmethod
+import math
+class Vehicule 
+  (metaclass=ABCMeta):
+    @abstractmethod
+    def deplacer(self):
+        pass
+    @staticmethod
+    def prime(n):
+        try:
+            i = 2
+            b = True
+            while b:
+                if i == n:
+                    b=False
+                    return f'{n} premier'
+                if n%i == 0:
+                    b = False
+                    return f'{n} non premier'
+                else:
+                    i += 1
+        except Exception as ex:
+            return f"{n} n'est pas une nombre positif"
+               
+class Voiture(Vehicule):
+    def deplacer(self):
+        print("C'est une voiture")
+
+class Avion(Vehicule):
+    def deplacer(self):
+        print("C'est une avion")
+
+v1 = Voiture()
+v2 =  Avion()
+
+print(v1.prime(7))
+
+    
+        </code></pre> 
+        <button onclick="copyCode(('code-snippet17'))">copyCode</button> 
+        <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+            Exercice 2: Surcharge des Opérateurs et Utilisation des Méthodes Abstraites
+          </h2>
+          
+          <ol style="padding-left: 20px;">
+            <li style="margin-bottom: 20px;">
+              <strong>Classe Abstraite et Héritage :</strong>
+              <ul style="padding-left: 20px; list-style-type: disc;">
+                <li style="margin-bottom: 10px;">
+                  Définissez une classe abstraite <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Forme</code> avec une méthode abstraite <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">calculer_surface()</code>.
+                </li>
+                <li style="margin-bottom: 10px;">
+                  Créez des classes dérivées <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Rectangle</code> et <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Cercle</code> qui héritent de <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">Forme</code>.
+                </li>
+                <li style="margin-bottom: 10px;">
+                  Redéfinissez la méthode <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">calculer_surface()</code> dans chaque classe dérivée pour calculer la surface spécifique à chaque forme.
+                </li>
+                <li style="margin-bottom: 10px;">
+                  Créez une méthode statique <code style="background-color: #f1f1f1; padding: 2px 5px; border-radius: 3px;">somme_aires()</code> dans chaque classe dérivée qui renvoie la somme des surfaces de deux formes.
+                </li>
+              </ul>
+            </li>
+          </ol>
+        <pre><code id="code-snippet18">
+            
+from abc import ABC , abstractmethod
+import math
+
+class Form(ABC):
+    @abstractmethod
+    def calculer_surface(self):
+        pass
+    
+class Rectangle(Form):
+    def __init__(self,longeur,largeur):
+        self.longeur = longeur
+        self.largeur = largeur
+    
+    def __add__(self,obj):
+        return self.calculer_surface() + obj.calculer_surface()
+
+    def calculer_surface(self):
+        return self.longeur*self.largeur
+    
+    def sommes_aires(self,form):
+        somme = form.calculer_surface() + self.calculer_surface()
+        return somme
+
+class Cercle(Form):
+    def __init__(self,rayon):
+        self.rayon = rayon
+    
+    def __add__(self,obj):
+        return self.calculer_surface() + obj.calculer_surface()
+
+    def calculer_surface(self):
+        return self.rayon ** 2 * math.pi
+    
+    def sommes_aires(self,form):
+        somme = form.calculer_surface() + self.calculer_surface()
+        return somme
+
+r1 = Rectangle(3,4)
+c1 = Cercle(2)
+c2 = Cercle(3)
+
+print(r1.calculer_surface())
+print(c1.calculer_surface())
+print(c2.calculer_surface())
+
+print(c1.sommes_aires(c2))
+
+print(c1+c2)
+
+
+
+    
+        </code></pre> 
+        <button onclick="copyCode(('code-snippet18'))">copyCode</button>        
+        </div>
+
+        </section>
+        <section id="tp4Content" class="content hidden">
+            <!-- Content for TP4 -->
+            <div  class="code-container" style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f9f9f9;">
+                <h1 style="color: #333; font-size: 2em; text-align: left; border-bottom: 2px solid #007BFF; padding-bottom: 10px; margin-bottom: 20px;">TP N°4</h1>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 1:
+                  </h2>
+                <pre><code id="code-snippet19">
+                    
+import re
+def valideEmail(email):
+    exEmail = r"[a-zA-Z\._+-]+[0-9]*@[a-z]+\.[a-z]+"
+    return re.match(exEmail, email)
+
+def extractiontélé(chaine):
+    return re.findall(r" [(05|06|07|08|+2125|+2126|+2127|+2128|002125|002126|002127|002128)][0-9]{8,} ", chaine)
+
+input = "aaitali624@gmail.com"
+if valideEmail(input):
+    print("valid")
+else:
+    print('invalid')
+
+cc = " 0625223862 - 0524394633 - 0742836441 - 00212828524399 - +212762996143 - 06369261851 "
+print(extractiontélé(cc))
+    
+                </code></pre>
+                <button onclick="copyCode(('code-snippet19'))">copyCode</button>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 2:
+                  </h2>
+                <pre><code id="code-snippet20">
+                    
+def remplacerChaine(text):
+liste = ["abcd", "efgh", "ijkl", "mnop"]
+for x in liste:
+    text =  re.sub(r""+x, "****", text)
+return text
+
+def valideCartCrédit(numéro):
+return re.match(r"[0-9]{4$}(-| )?[0-9]{4$}(-| )?[0-9]{4$}(-| )?[0-9]{4$}", numéro)
+
+tt = "Ayoub a 19 ans abcd et son CIN BF23539 et ijkl  #son ID efgh est 1521 et son tele est 0625223862 #et son email est aaiatali624@gmail.com, Zouhair a 22 ans et son tele est +212625223862 et son CIN BH10731 son ID st 4109 et son email est zouhair00@gmail.com"
+nn = "0382 9262 9468 1720"
+
+print(remplacerChaine(tt))
+if valideCartCrédit(nn):
+print("valid")
+else:
+print('invalid')
+
+                </code></pre>
+                <button onclick="copyCode(('code-snippet20'))" >copyCode</button>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 3:
+                </h2>
+                <pre><code id="code-snippet21">
+                    
+def extractionHashtags(chaine):
+return re.findall(r"#(\w+)", chaine)
+
+print(extractionHashtags(tt))
+
+def valideMotPasse(text):
+x = re.match(r".*[A-Z].*", text)
+y = re.match(r".*[a-z].*", text)
+z = re.match(r".*[0-9].*", text)
+a = re.match(r".*[@ + - ; _ ' / = *].*", text)
+b = re.match(r".{8,}", text)
+if x and y and z and a and b:
+    return True
+else:
+    return False
+
+
+mot_de_passe = "7G72GK_gdj'fdh"
+if valideMotPasse(mot_de_passe):
+print("mot de passe force")
+else:
+print('mot de passe faible')
+
+                </code></pre>
+                <button onclick="copyCode(('code-snippet21'))" >copyCode</button>
+                <h2 style="color: #007BFF; font-size: 1.5em; text-align: left; border-left: 4px solid #007BFF; padding-left: 10px;">
+                    Exercice 4:
+                </h2>
+                <pre><code id="code-snippet22">
+                
+def extractionHref(text):
+hrefs = re.findall(r"href=\".+\"", text)
+return hrefs
+
+f = open('test.htm', "r")
+text = f.read()
+achrefs = extractionHref(text)
+print(achrefs)
+
+def urlEX(hrefs):
+urlsNoComp = []
+urlsComp = []
+
+for href in hrefs:
+    href = re.sub(r"href=\"", "", href)
+    urlsNoComp.append(href)
+for href in urlsNoComp:
+    href = re.sub(r"\"", "", href)
+    urlsComp.append(href)
+
+return urlsComp
+
+urls = urlEX(achrefs)
+print(urls)
+
+def valideURL(urls):
+urlsValide = []
+for url in urls:
+    a =  re.match(r"htpps://www\.\w+\.\w+", url)
+    b = re.match(r"htpp://www\.\w+\.\w+", url) 
+    c = re.match(r"^(w)ww\.\w+\.\w+", url)
+    if a or b or c:
+        urlsValide.append(url)
+return urlsValide
+
+print(valideURL(urls))
+
+                </code></pre>
+                <button onclick="copyCode(('code-snippet22'))" >copyCode</button>
+
+
+
+
+        </section>
+
+        <!-- Content for HELP -->
+        <section id="helpContent" class="content hidden">
+            <h2>Contact Information</h2>
+            <img src="email.jpg" style="width: 25px; height: 25px;" alt="email">
+            <a href="supportwww@gmail.com">email of the owner</a><br><br>
+            <img src="phone.jpg" style="width: 25px; height: 25px;" alt="number">
+            <a href="+216 778 999 66">number of the owner </a><br><br>
+            <img src="team.png"  style="width: 25px; height: 25px;" alt="team">
+            <a href="teamsupport@gamil.com">contact the team</a><br><br>
+
+        </section>
+        
+        <!-- Content for PRESENTATION -->
+        <section id="presentationContent" class="content hidden">
+            <h2>Portfolio Presentation</h2>
+            <!-- Add your portfolio content here -->
+            <style>
+                .pdf-container {
+                  display: none; /* Hide initially */
+                  position: relative;
+                  width: 100%;
+                  height: 600px; /* Initial height */
+                  overflow: hidden;
+                }
+                .pdf-container:target {
+                  display: block; /* Display when targeted */
+                }
+                .pdf-embed {
+                  width: 100%;
+                  height: 100%;
+                }
+                .pdf-controls {
+                  text-align: center;
+                  margin-top: 10px;
+                }
+                .pdf-controls a {
+                  display: inline-block;
+                  margin-right: 10px;
+                  padding: 10px 20px;
+                  font-size: 16px;
+                  background-color: #007BFF;
+                  color: white;
+                  text-decoration: none;
+                }
+              </style>
+              <div class="pdf-controls">
+                
+                <a href="POO.pdf" download>open</a>
+              </div>
+              
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

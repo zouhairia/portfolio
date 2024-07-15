@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Project</title>
+    <link rel="stylesheet" href="project_crud.css">
+</head>
+<body style="background-color: #1d2630">
+    <div class="container">
+        <h1>CRUD Project</h1>
+        <form id="crudForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="number" placeholder="Phone Number">
+            <input type="text" id="job" placeholder="Job Title">
+            <button type="submit">Add</button>
+        </form>
+        <div class="table-container">
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Job Title</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="users"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="project_crud.js"></script>
+</body>
+</html>
